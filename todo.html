@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="todo.css">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="Enter a number from 1 to 100" class="input">
+    <button class="btn">Guess</button>
+    <p class="status">Let's start</p>
+    <button class="try">Try Again</button>|
+</body>
+<script>
+    let randomNumber = Math.floor(Math.random()*100);
+    let chances = 7;
+    document.querySelector('.btn').addEventListener("click",()=>{
+        let selectedNmber = Number(document.querySelector(".input").value);
+        chances -= 1;
+        if (chances == 0){
+            alert("Game Over");
+            document.querySelector(".btn").style.display = "none";
+        }
+        if(randomNumber > selectedNmber){
+            document.querySelector('.status').innerText = "The selected number is lesser";
+        }
+        else if(randomNumber < selectedNmber){
+            document.querySelector('.status').innerText = "The selected number is greater";
+        }
+        else{
+            document.querySelector('.status').innerText = "You Won";
+        }
+    })
+    document.querySelector(".try").addEventListener("click",()=>{
+        chances = 7;
+        document.querySelector('.btn').style.display = "initial";
+    })
+</script>
+</html>
+
